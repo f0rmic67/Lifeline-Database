@@ -1,15 +1,19 @@
+DROP DATABASE IF EXISTS Lifeline;
+CREATE DATABASE Lifeline;
+USE Lifeline;
+
 CREATE TABLE student_user (
     student_id BIGINT UNSIGNED NOT NULL, -- Does not auto-increment because it is assigned using the number on a student's ID card
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
     email VARCHAR(50) NOT NULL,
-    `password` VARCHAR(30), -- password is a reserved word in sql 
+    pass VARCHAR(30), -- password is a reserved word in sql 
     username VARCHAR(30),
     PRIMARY KEY (student_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE student_medical_info (
-    id INT UNSIGNED NOT NULL AUTO-INCREMENT -- for uniqueness 
+    id INT UNSIGNED NOT NULL, 
     student_id BIGINT UNSIGNED NOT NULL,
     dob DATE,
     heart_problems BOOL,
@@ -49,3 +53,5 @@ CREATE TABLE emergency_contacts (
         REFERENCES student_user(student_id)
         ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8MB4;
+
+
